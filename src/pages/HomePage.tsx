@@ -34,11 +34,13 @@ import { DEFAULT_LABELS } from "../types/report";
 import { validateTimeBlock } from "../utils/validation";
 
 function getInitialForm(): ReportFormData {
+  const now = new Date();
+  const currentHourMinute = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
   return {
     os: "",
     client: "",
-    date: new Date().toISOString(),
-    timeBlocks: [{ id: uuid(), start: "", end: "" }],
+    date: now.toISOString(),
+    timeBlocks: [{ id: uuid(), start: currentHourMinute, end: "" }],
     description: "",
   };
 }
