@@ -31,7 +31,7 @@ jobs:
 
       - name: Xcode Build (Debug Simulator/Testing)
         run: |
-          xcodebuild -workspace ios/App/App.xcworkspace \
+          xcodebuild -project ios/App/App.xcodeproj \
                      -scheme App \
                      -configuration Debug \
                      -sdk iphonesimulator \
