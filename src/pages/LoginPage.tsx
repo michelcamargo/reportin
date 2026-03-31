@@ -27,7 +27,7 @@ export function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/", { replace: true });
     } catch (error) {
-      const err = error as any;
+      const err = error as Error & { code?: string };
       console.error("Login erro:", err);
       if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
         setError("Email ou senha incorretos.");
@@ -42,7 +42,7 @@ export function LoginPage() {
   };
 
   return (
-    <Box sx={{ minHeight: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", p: 3 }}>
+    <Box sx={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center", p: 3 }}>
       <Stack spacing={4} sx={{ width: "100%", maxWidth: 400 }} component="form" onSubmit={handleLogin}>
         <Stack spacing={1} textAlign="center">
           <Typography variant="h4" fontWeight={800} color="primary.main">
